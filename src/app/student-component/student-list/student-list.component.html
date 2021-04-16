@@ -1,0 +1,8 @@
+<div class="container">
+  <h2 class="text-center">Student list</h2>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let student of studentModelList">
+      <app-student [studentModel]="student"></app-student>
+    </div>
+  </div>
+</div>
