@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { IStudent } from 'src/app/model/IStudent';
+import { StudentService } from 'src/app/services/student.service';
+
 
 @Component({
   selector: 'app-add-student',
@@ -8,8 +12,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AddStudentComponent implements OnInit {
  addStudentForm:FormGroup;
- students:any={}
-  constructor() { }
+ students:IStudent;
+  constructor(private router:Router,private studentService:StudentService) { }
 
   ngOnInit() {
     this.addStudentForm=new FormGroup(
@@ -21,23 +25,26 @@ export class AddStudentComponent implements OnInit {
     );
   }
   onSubmitToAddStudent(){
-    console.log(this.addStudentForm.value);
-    this.students=Object.assign(this.students,this.addStudentForm.value);
-    this.addStudent(this.students);
-    this.addStudentForm.reset();
-  }
-  addStudent(students){
-    var studentlist=[];
-    if(localStorage.getItem("Students")){
-      studentlist=JSON.parse(localStorage.getItem("Students"))
-      studentlist=[students,...studentlist]
-
+    if(localStorage.getItem("StudentId")){
+      var studentId=JSON.parse(localStorage.getItem("StudentId"));
+      studentId++;
+      localStorage.setItem("StudentId",JSON.stringify(studentId))
     }
     else{
-      studentlist=[students]
-
+      localStorage.setItem("StudentId",JSON.stringify(17103079))
     }
-    localStorage.setItem("Students",JSON.stringify(studentlist))
+    this.studentService.addStudent(this.mapStudentBuilider());
+    this.addStudentForm.reset();
+    this.router.navigate(['/'])
+  }
+
+  mapStudentBuilider(){
+    return this.students={
+      Program:this.addStudentForm.get('program').value,
+      Id:JSON.parse(localStorage.getItem("StudentId")),
+      Address:this.addStudentForm.get('address').value,
+      Name:this.addStudentForm.get('fullName').value
+    }
 
   }
 

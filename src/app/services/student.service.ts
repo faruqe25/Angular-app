@@ -6,38 +6,31 @@ import { IStudent } from '../model/IStudent';
 })
 export class StudentService {
   getAllStudentList() :Array<IStudent> {
-    return [
-      {
-        Name: "Md Omar Faruqe",
-        Program: "BCSE",
-        Id: 17103079,
-        Address: "Gazipur"
-      },
-      {
-        Name: "tasmi Tamanna Erin",
-        Program: "BCSE",
-        Id: 17103103,
-        Address: "Dhaka"
-      },
-      {
-        Name: "Rashedul Islam Sadar",
-        Program: "BCSE",
-        Id: 17103080,
-        Address: "Dhaka"
-      },
-      {
-        Name: "Touhedure Rahman",
-        Program: "BCSE",
-        Id: 17103081,
-        Address: "Dhaka"
-      },
-      {
-        Name: "Beguni Tie",
-        Program: "EEE",
-        Id: 0,
-        Address: "Canada"
-      }
-    ]
+    return JSON.parse(localStorage.getItem("Students"))
+  }
+  addStudent(students){
+    var studentlist=[];
+    if(localStorage.getItem("Students")){
+      studentlist=JSON.parse(localStorage.getItem("Students"))
+      studentlist=[students,...studentlist]
+    }
+    else{
+      studentlist=[students]
+    }
+    localStorage.setItem("Students",JSON.stringify(studentlist))
+  }
+  getStudent(id){
+    var studentlist=[];
+    if(localStorage.getItem("Students")){
+      studentlist=JSON.parse(localStorage.getItem("Students"));
+      return studentlist.findIndex(item => {
+        return (item["Id"] === id)
+     })
+
+
+
+    }
+    return false;
 
   }
   constructor() { }

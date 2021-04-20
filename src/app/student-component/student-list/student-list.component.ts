@@ -16,5 +16,12 @@ export class StudentListComponent implements OnInit {
   ngOnInit(): void {
    this.studentModelList= this.studentService.getAllStudentList();
   }
+  Confirm(data){
+    var a=JSON.stringify(this.studentService.getStudent(data));
+    var id=Number(a);
+    this.studentModelList.splice(id,1).splice(0);
+    localStorage.setItem("Students",JSON.stringify(this.studentModelList))
+
+  }
 
 }

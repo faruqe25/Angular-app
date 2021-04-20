@@ -1,5 +1,5 @@
 export interface IStudent {
-  Id:Number,
+  Id:number,
   Name:string,
   Program :string,
   Address:string
