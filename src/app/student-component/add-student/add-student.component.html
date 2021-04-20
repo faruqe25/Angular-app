@@ -38,7 +38,7 @@
     </span>
     </div>
     <button *ngIf="!editMode" [disabled]="!addStudentForm.valid" type="submit" class="btn btn-success">Submit</button>
-    <button *ngIf="editMode"  type="submit" class="btn btn-success mr-2">Update</button>
+    <button *ngIf="editMode" [disabled]="!addStudentForm.valid" type="submit" class="btn btn-success mr-2">Update</button>
     <a *ngIf="editMode"  routerLink='/' class="btn btn-success">Back</a>
   </form>
 </div>
