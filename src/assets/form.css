@@ -4,3 +4,9 @@
 .ng-valid{
   border-color: green;
 }
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}

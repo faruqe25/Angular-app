@@ -10,11 +10,13 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { StudentListComponent } from './student-component/student-list/student-list.component';
 import { AddStudentComponent } from './student-component/add-student/add-student.component';
 import { StudentService } from './services/student.service';
+import { EditStudentComponent } from './student-component/edit-Student/edit-Student.component';
 
 const appRoutes: Routes=[
   {path:'', component: StudentListComponent},
-
-  {path:'addstudent', component: AddStudentComponent}
+  {path:'addstudent', component: AddStudentComponent},
+  {path:'editstudent/:id', component: EditStudentComponent},
+  {path:'studentdetails/:id', component: StudentComponent}
 
 ]
 @NgModule({
@@ -23,7 +25,8 @@ const appRoutes: Routes=[
     StudentComponent,
     NavBarComponent,
     StudentListComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    EditStudentComponent
   ],
   imports: [
     BrowserModule,

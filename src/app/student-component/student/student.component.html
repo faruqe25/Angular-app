@@ -1,19 +1,31 @@
+<div class="card border-info mt-3 shadow-lg  " style="width: 18rem;">
+  <!-- <img src="..." class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title text-center">Student Information</h5>
+    <!-- <p class="card-text">Know your student</p> -->
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Name : {{studentModel.Name}}</li>
+    <li class="list-group-item"> Program : {{studentModel.Program}}</li>
+    <li class="list-group-item">Id : {{studentModel.Id}}</li>
+    <li class="list-group-item">Address : {{studentModel.Address}}</li>
+  </ul>
+  <div *ngIf="!detailsMode" class="card-body">
 
-    <div class="card border-info mt-3 shadow-lg " style="width: 18rem;">
-      <!-- <img src="..." class="card-img-top" alt="..."> -->
-      <div class="card-body">
-        <h5 class="card-title text-center">Student Information</h5>
-        <!-- <p class="card-text">Know your student</p> -->
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Name : {{studentModel.Name}}</li>
-        <li class="list-group-item"> Program : {{studentModel.Program}}</li>
-        <li class="list-group-item">Id : {{studentModel.Id}}</li>
-        <li class="list-group-item">Address : {{studentModel.Address}}</li>
-      </ul>
-      <div class="card-body">
 
-          <button (click)="passData(studentModel.Id)">Delete</button>
+    <button class="btn btn-danger mr-2" (click)="passData(studentModel.Id)">Delete</button>
 
-      </div>
-    </div>
+    <button class="btn btn-success mr-2" routerLinkActive='Active' routerLink='/editstudent/{{studentModel.Id}}'> Edit
+    </button>
+
+    <button class="btn btn-success" routerLinkActive='Active' routerLink='/studentdetails/{{studentModel.Id}}'> Details
+    </button>
+
+
+  </div>
+  <div *ngIf="detailsMode" class="card-body">
+
+    <button class="btn btn-success" routerLinkActive='Active' routerLink='/'> Back To List </button>
+
+  </div>
+</div>

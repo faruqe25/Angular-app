@@ -19,19 +19,36 @@ export class StudentService {
     }
     localStorage.setItem("Students",JSON.stringify(studentlist))
   }
-  getStudent(id){
+  getStudentIndex(id){
     var studentlist=[];
     if(localStorage.getItem("Students")){
       studentlist=JSON.parse(localStorage.getItem("Students"));
       return studentlist.findIndex(item => {
         return (item["Id"] === id)
      })
-
-
-
     }
     return false;
 
+  }
+  getStudentDetails(id){
+    var studentlist=[];
+    if(localStorage.getItem("Students")){
+      studentlist=JSON.parse(localStorage.getItem("Students"));
+      return studentlist.find(item => {
+        return (item["Id"] === id)
+     })
+    }
+    return false;
+  }
+  editStudent(students,id){
+    var index=Number(this.getStudentIndex(id));
+    var studentlist=[];
+
+      studentlist=JSON.parse(localStorage.getItem("Students"))
+      studentlist.splice(index,1,students)
+
+
+    localStorage.setItem("Students",JSON.stringify(studentlist))
   }
   constructor() { }
 

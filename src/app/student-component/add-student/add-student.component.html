@@ -5,6 +5,7 @@
     <div class="form-group">
       <label for="inputEmail4">Full Name</label>
       <input type="text" class="form-control" formControlName="fullName">
+      <input type="hidden" class="form-control" formControlName="id">
       <span *ngIf="!addStudentForm.get('fullName').valid
       && addStudentForm.get('fullName').touched" class="text-danger">
       <span *ngIf="addStudentForm.get('fullName').hasError('required')">
@@ -36,8 +37,9 @@
        Please Provide Address
     </span>
     </div>
-
-    <button [disabled]="!addStudentForm.valid" type="submit" class="btn btn-success">Submit</button>
+    <button *ngIf="!editMode" [disabled]="!addStudentForm.valid" type="submit" class="btn btn-success">Submit</button>
+    <button *ngIf="editMode"  type="submit" class="btn btn-success mr-2">Update</button>
+    <a *ngIf="editMode"  routerLink='/' class="btn btn-success">Back</a>
   </form>
 </div>
 </div>
