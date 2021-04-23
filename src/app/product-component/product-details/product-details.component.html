@@ -1,0 +1,16 @@
+<div class="card border-info mt-3 shadow-lg  " style="width: 18rem;">
+   <!-- <img src="https://source.unsplash.com/random" class="card-img-top" alt="..."> -->
+  <div class="card-body">
+    <h5 class="card-title text-center">Product Information</h5>
+    <!-- <p class="card-text">Know your student</p> -->
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Product Name : {{productModel.productName}}</li>
+    <li class="list-group-item"> Price : {{productModel.productPrice}}</li>
+    <li class="list-group-item">Description : {{productModel.productDescription}}</li>
+  </ul>
+  <div  class="card-body">
+    <button class="btn btn-info btn-block" (click)="ChoosenItem(productModel)">Add to cart</button>
+  </div>
+
+</div>

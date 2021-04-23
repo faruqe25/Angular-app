@@ -1,0 +1,50 @@
+<div class="col-md-4 m-auto">
+  <div class="card border-info p-3 shadow-lg">
+  <h3 class="text-center">Product Information </h3>
+  <form [formGroup]="addProudctInfoForm" (ngSubmit)="addProductInfo()">
+    <div class="form-group">
+      <label for="inputEmail4">Product Name</label>
+      <input type="text" class="form-control" formControlName="productName">
+      <input type="hidden" class="form-control" formControlName="productId">
+      <span *ngIf="!addProudctInfoForm.get('productName').valid
+      && addProudctInfoForm.get('productName').touched" class="text-danger">
+      <span>
+        Please Provide Product Name
+      </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword4">Product Price</label>
+      <input type="text" class="form-control" formControlName="productPrice">
+      <span *ngIf="!addProudctInfoForm.get('productPrice').valid
+            && addProudctInfoForm.get('productPrice').touched" class="text-danger">
+        Please Provide Product Price
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Product Description</label>
+      <input type="text" class="form-control" formControlName="productDescription">
+      <span *ngIf="!addProudctInfoForm.get('productDescription').valid
+        && addProudctInfoForm.get('productDescription').touched" class="text-danger">
+       Please Provide Product Description
+    </span>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Product Type</label>
+      <select type="text" class="form-control" formControlName="productTypeId">
+        <option value="" disabled> Product Type </option>
+        <option *ngFor="let item of productTypeList" value="{{item.productTypeId}}">
+               {{item.productType}}
+        </option>
+      </select>
+      <span *ngIf="!addProudctInfoForm.get('productTypeId').valid
+        && addProudctInfoForm.get('productTypeId').touched" class="text-danger">
+       Please Select Product Type
+    </span>
+    </div>
+    <button *ngIf="!editMode" [disabled]="!addProudctInfoForm.valid" type="submit" class="btn btn-success">Submit</button>
+    <button *ngIf="editMode"  [disabled]="!addProudctInfoForm.valid" type="submit" class="btn btn-success mr-2">Update</button>
+    <a *ngIf="editMode"  routerLink='/' class="btn btn-success">Back</a>
+  </form>
+</div>
+</div>

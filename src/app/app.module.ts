@@ -11,12 +11,23 @@ import { StudentListComponent } from './student-component/student-list/student-l
 import { AddStudentComponent } from './student-component/add-student/add-student.component';
 import { StudentService } from './services/student.service';
 import { EditStudentComponent } from './student-component/edit-Student/edit-Student.component';
+import { AddProductComponent } from './product-component/add-product/add-product.component';
+import { ProductDetailsComponent } from './product-component/product-details/product-details.component';
+import { ProductListComponent } from './product-component/product-list/product-list.component';
+import { AddProductTypeComponent } from './product-component/add-product-type/add-product-type.component';
+import { ProductTypeListComponent } from './product-component/product-type-list/product-type-list.component';
+import { ProductService } from './services/product.service';
 
 const appRoutes: Routes=[
   {path:'', component: StudentListComponent},
   {path:'addstudent', component: AddStudentComponent},
   {path:'editstudent/:id', component: EditStudentComponent},
-  {path:'studentdetails/:id', component: StudentComponent}
+  {path:'studentdetails/:id', component: StudentComponent},
+  // For RMS
+  {path:'producttypelist', component: ProductTypeListComponent},
+  {path:'addproduct', component: AddProductComponent},
+  {path:'productlist', component: ProductListComponent},
+
 
 ]
 @NgModule({
@@ -26,7 +37,13 @@ const appRoutes: Routes=[
     NavBarComponent,
     StudentListComponent,
     AddStudentComponent,
-    EditStudentComponent
+    EditStudentComponent,
+    //New App RMS
+    AddProductComponent,
+    ProductDetailsComponent,
+    ProductListComponent,
+    AddProductTypeComponent,
+    ProductTypeListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +52,8 @@ const appRoutes: Routes=[
     ReactiveFormsModule
   ],
   providers: [
-    StudentService
+    StudentService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

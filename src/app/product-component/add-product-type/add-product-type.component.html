@@ -1,0 +1,18 @@
+<div class="col-md-8 m-auto">
+  <div class="card border-info p-3 shadow-lg">
+  <h2 class="text-center">Product Type </h2>
+  <form [formGroup]="addProductForm" (ngSubmit)="addNewProductType()">
+    <div class="form-group">
+      <label for="inputEmail4">Product Type</label>
+      <input type="text" class="form-control" formControlName="productType">
+      <input type="hidden" class="form-control" formControlName="productTypeId">
+      <span class="text-danger" *ngIf="!addProductForm.valid && addProductForm.get('productType').touched">
+        Product Type is required
+      </span>
+    </div>
+    <button  *ngIf="!editMode" [disabled]="!addProductForm.valid"  type="submit" class="btn btn-success">Submit</button>
+    <button *ngIf="editMode" [disabled]="!addProductForm.valid"  type="submit" class="btn btn-success">Update</button>
+  </form>
+</div>
+</div>
+
